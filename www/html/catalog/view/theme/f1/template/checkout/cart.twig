@@ -1,0 +1,58 @@
+{{ header }}
+<section class="cart">
+	<div class="container">
+		<div class="cart__body">
+			<ul class="cart__list">
+				{% for product in products %}
+					<li class="cart__item">
+						<article class="product-card product-card--cart cart__product-card">
+							<img class="product-card__img" src="{{ product.thumb }}" alt="{{ product.name }}">
+							<h3 class="heading heading--quaternary product-card__heading">
+								<a class="product-card__link" href="{{ product.href }}" aria-label="">{{ product.name }}</a>
+							</h3>
+							<div class="product-price product-price--cart cart__list-product-price">
+								{% if product.special %}
+									<strong class="product-price__total">{{ product.special }}</strong>
+									<s class="product-price__old">{{ product.price }}</s>
+								{% else %}
+									<strong class="product-price__total">{{ product.price }}</strong>
+								{% endif %}
+							</div>
+							<button class="product-card__button-delete" type="button" onclick="removeFromCart({{ product.cart_id }})" aria-label="удалить из корзины">Удалить</button>
+						</article>
+					</li>
+				{% endfor %}
+			</ul>
+			<div class="cart__total-wrapper">
+				<h1 class="heading heading--secondary heading--align-center">Общая сумма</h1>
+				<div class="product-price cart__product-price">
+					{% if special_price %}
+						<strong class="product-price__total">{{ special_price }}</strong>
+						<s class="product-price__old">{{ total_price }}</s>
+						<span class="product-discount product-price__discount">-{{total_discount}}%</span>
+					{% else %}
+						<strong class="product-price__total">{{ total_price }}</strong>
+					{% endif %}
+				</div>
+				<button class="button cart__button" type="button" onclick="confirm()">Заказать</button>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	async function removeFromCart(cartId) {
+		await fetch('index.php?route=checkout/cart/remove', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: `key=${cartId}`
+		});
+		location.reload();
+	}
+
+	async function confirm() {
+		document.location = 'index.php?route=checkout/order';
+	}
+</script>
+{{ footer }}

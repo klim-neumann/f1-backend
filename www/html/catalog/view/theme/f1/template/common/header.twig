@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="page" dir="{{ direction }}" lang="{{ lang }}">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{ title }}</title>
+		<base href="{{ base }}"/>
+		{% if description %}
+			<meta name="description" content="{{ description }}"/>
+		{% endif %}
+		{% if keywords %}
+			<meta name="keywords" content="{{ keywords }}"/>
+		{% endif %}
+		{% for style in styles %}
+			<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}"/>
+		{% endfor %}
+		{% for script in scripts %}
+			<script src="{{ script }}" type="text/javascript"></script>
+		{% endfor %}
+		{% for link in links %}
+			<link href="{{ link.href }}" rel="{{ link.rel }}"/>
+		{% endfor %}
+		{% for analytic in analytics %}
+			{{ analytic }}
+		{% endfor %}
+	</head>
+	<body class="page__body">
+		<header class="header page__header">
+			<div class="container">
+				<div class="header__body">
+					<a class="logo header__logo" href="{{ home }}" aria-label="домашняя страница">
+						<img class="logo__img" src="{{ logo }}" alt="{{ name }}">
+					</a>
+					<button class="catalog-button header__catalog-button" id="header__catalog-button" type="button" aria-expanded="false" aria-controls="page__catalog" aria-label="каталог">
+						<svg class="catalog-button__img catalog-button__img--list" viewbox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.44444 2H18M6.44444 7.5H18M6.44444 13H18M2 2H2.00933M2 7.5H2.00933M2 13H2.00933" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						<svg class="catalog-button__img catalog-button__img--cross" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M18 2L2 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M2 2L18 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						<span class="catalog-button__text">Каталог</span>
+					</button>
+					{{ search }}
+					<nav class="nav header__nav">
+						<ul class="nav__list">
+							<li class="nav__item">
+								<a class="nav__link nav__link--cart" href="{{ shopping_cart }}" aria-label="корзина">Корзина</a>
+							</li>
+							<li class="nav__item">
+								{% if logged %}
+									<a class="nav__link nav__link--user" href="index.php?route=account/logout" aria-label="войти">Выйти</a>
+								{% else %}
+									<a class="nav__link nav__link--user" href="{{ login }}" aria-label="войти">Войти</a>
+								{% endif %}
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		{{ menu }}
+		<main class="page__main">

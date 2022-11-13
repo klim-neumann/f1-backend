@@ -1,0 +1,87 @@
+{{ header }}
+<section class="search-result">
+	<div class="container">
+		<div class="search-result__body">
+			<article class="heading-group search-result__heading-group">
+				<h1 class="heading heading--secondary">{{ heading_title }}</h1>
+				{% if not products %}
+					<p class="subheading">Ничего не найдено :(</p>
+				{% endif %}
+			</article>
+			{% if products %}
+				<ul class="selects-list search-result__selects-list">
+					<li class="selects-list__item">
+						<div class="select">
+							<label for="select__list-0" class="select__label">Категория</label>
+							<select class="select__list" id="select__list-0" onchange="sortByCategory(this.value)">
+								{% if category_id == 0 %}
+									<option value="0" selected>{{ text_category }}</option>
+								{% else %}
+									<option value="0">{{ text_category }}</option>
+								{% endif %}
+								{% for category in categories %}
+									{% if category.category_id == category_id %}
+										<option value="{{ category.category_id }}" selected>{{ category.name }}</option>
+									{% else %}
+										<option value="{{ category.category_id }}">{{ category.name }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						</div>
+					</li>
+					<li class="selects-list__item">
+						<div class="select">
+							<label for="select__list-1" class="select__label">{{ text_sort }}</label>
+							<select class="select__list" id="select__list-1" onchange="location = this.value;">
+								{% for sorts in sorts %}
+									{% if sorts.value == '%s-%s'|format(sort, order) %}
+										<option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+									{% else %}
+										<option value="{{ sorts.href }}">{{ sorts.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						</div>
+					</li>
+				</ul>
+				<ul class="products-list">
+					{% for product in products %}
+						<li class="products-list__item">
+							<article class="product-card products-list__product-card">
+								{% if product.discount %}
+									<span class="product-discount product-card__discount">-{{ product.discount }}%</span>
+								{% endif %}
+								<img class="product-card__img" src="{{ product.thumb }}" alt="{{ product.name }}">
+								<h3 class="heading heading--quaternary product-card__heading">
+									<a class="product-card__link" href="{{ product.href }}" aria-label="товар">{{ product.name }}</a>
+								</h3>
+								<div class="product-price">
+									{% if product.special %}
+										<strong class="product-price__total">{{ product.special }}</strong>
+										<s class="product-price__old">{{ product.price }}</s>
+									{% else %}
+										<strong class="product-price__total">{{ product.price }}</strong>
+									{% endif %}
+								</div>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>
+<script>
+
+	function sortByCategory(categoryId) {
+const url = new URL(location);
+const params = new URLSearchParams(url.search);
+params.set('category_id', categoryId);
+document.location = `${
+url.pathname
+}?${
+params.toString()
+}`;
+}
+</script>
+{{ footer }}

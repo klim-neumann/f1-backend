@@ -1,0 +1,22 @@
+{{ header }}
+<section class="auth">
+	<div class="container">
+		<div class="auth__body">
+			<article class="heading-group heading-group--max-width-primary auth__heading-group">
+				<h1 class="heading">F1.comp лучшие товары для геймера</h1>
+				<p class="subheading">F1.comp интернет магазин по продаже комплектущих для ПК, игровых
+												компьютеров и переферии для настоящего геймера.</p>
+			</article>
+			<div class="auth__form-wrapper">
+				<h2 class="heading heading--secondary heading--align-center">Вход</h2>
+				<form class="form" action="{{ action }}" method="post">
+					<input class="input" type="text" name="email" inputmode="email" value="{{ email }}" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" required aria-label="электронная почта">
+					<input class="input" type="password" name="password" value="{{ password }}" placeholder="Пароль" required aria-label="пароль">
+					<button class="button form__button" aria-label="войти">Войти</button>
+				</form>
+				<a class="auth__link" href="{{ register }}">Нет аккаунта? Зарегистрируйтесь!</a>
+			</div>
+		</div>
+	</div>
+</section>
+{{ footer }}

@@ -1,0 +1,49 @@
+services:
+    nginx:
+        image: nginx:1.23.2
+        container_name: nginx-1.23.2
+        ports:
+            - '80:80'
+        volumes:
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+            - ./www/:/var/www/
+        networks:
+            - backend
+
+    php:
+        build: ./docker/php/
+        container_name: php-7.4.33-fpm
+        volumes:
+            - ./www/:/var/www/
+        networks:
+            - backend
+
+    mysql:
+        image: mysql:8.0.31
+        container_name: mysql-8.0.31
+        volumes:
+            - mysql:/var/lib/mysql/
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        networks:
+            - backend
+
+    adminer:
+        image: adminer:4.8.1-standalone
+        container_name: adminer-4.8.1-standalone
+        ports:
+            - '8080:8080'
+        networks:
+            - backend
+
+volumes:
+    mysql:
+        name: mysql
+
+networks:
+    backend:
+        name: backend
+        driver: bridge

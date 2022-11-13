@@ -1,0 +1,41 @@
+</main>
+<footer class="footer">
+	<div class="container">
+		<div class="footer__body">
+			<div>
+				<h2 class="heading heading--tertiary footer__heading">Будьте в курсе новостей</h2>
+				<form class="form form--secondary" action="#" method="post">
+					<input class="input input--secondary" type="text" inputmode="email" placeholder="Введите e-mail" pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" required aria-label="электронная почта">
+					<button class="button button--secondary" aria-label="подписаться">Подписаться</button>
+				</form>
+			</div>
+			<div class="socials">
+				<h2 class="heading heading--tertiary footer__heading">Мы в соцсетях</h2>
+				<ul class="socials__list">
+					<li class="socials__item">
+						<a class="socials__link" href="#" aria-label="">
+							<svg class="socials__img" data-src="catalog/view/theme/f1/img/instagram.5c7ca2317378bc7ab998.svg"></svg>
+						</a>
+					</li>
+					<li class="socials__item">
+						<a class="socials__link" href="#" aria-label="">
+							<svg class="socials__img" data-src="catalog/view/theme/f1/img/whatsapp.6bff021d71bd75665373.svg"></svg>
+						</a>
+					</li>
+					<li class="socials__item">
+						<a class="socials__link" href="#" aria-label="">
+							<svg class="socials__img" data-src="catalog/view/theme/f1/img/telegram.1374154c20a8bf139f06.svg"></svg>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<small class="footer__text">ТОО “F1.comp” 2022 год</small>
+		</div>
+	</div>
+</footer>
+{% for style in styles %}
+	<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}"/>
+{% endfor %}
+{% for script in scripts %}
+	<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}</body></html>

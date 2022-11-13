@@ -1,0 +1,57 @@
+{{ header }}
+<section class="category">
+	<div class="container">
+		<div class="category__body">
+			<article class="heading-group category__heading-group">
+				<h1 class="heading heading--secondary">{{ heading_title }}</h1>
+				{% if not products %}
+					<p class="subheading">К сожалению, в категории нет товара :(</p>
+				{% endif %}
+			</article>
+			{% if products %}
+				<ul class="selects-list category__selects-list">
+					<li class="selects-list__item">
+						<div class="select">
+							<label for="select__list-0" class="select__label">{{ text_sort }}</label>
+							<select class="select__list" id="select__list-0" onchange="location = this.value;">
+								{% for sorts in sorts %}
+									{% if sorts.value == '%s-%s'|format(sort, order) %}
+										<option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+									{% else %}
+										<option value="{{ sorts.href }}">{{ sorts.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						</div>
+					</li>
+				</ul>
+			{% endif %}
+			{% if products %}
+				<ul class="products-list">
+					{% for product in products %}
+						<li class="products-list__item">
+							<article class="product-card products-list__product-card">
+								{% if product.discount %}
+									<span class="product-discount product-card__discount">-{{ product.discount }}%</span>
+								{% endif %}
+								<img class="product-card__img" src="{{ product.thumb }}" alt="{{ product.name }}">
+								<h3 class="heading heading--quaternary product-card__heading">
+									<a class="product-card__link" href="{{ product.href }}" aria-label="товар">{{ product.name }}</a>
+								</h3>
+								<div class="product-price">
+									{% if product.special %}
+										<strong class="product-price__total">{{ product.special }}</strong>
+										<s class="product-price__old">{{ product.price }}</s>
+									{% else %}
+										<strong class="product-price__total">{{ product.price }}</strong>
+									{% endif %}
+								</div>
+							</article>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{{ footer }}

@@ -1,0 +1,30 @@
+<section class="offers">
+	<div class="container">
+		<div class="offers__body">
+			<h2 class="heading heading--tertiary offers__heading">Новинки</h2>
+			<ul class="products-list">
+				{% for product in products %}
+					<li class="products-list__item">
+						<article class="product-card products-list__product-card">
+							{% if product.discount %}
+								<span class="product-discount product-card__discount">-{{ product.discount }}%</span>
+							{% endif %}
+							<img class="product-card__img" src="{{ product.thumb }}" alt="{{ product.name }}">
+							<h3 class="heading heading--quaternary product-card__heading">
+								<a class="product-card__link" href="{{ product.href }}" aria-label="товар">{{ product.name }}</a>
+							</h3>
+							<div class="product-price">
+								{% if product.special %}
+									<strong class="product-price__total">{{ product.special }}</strong>
+									<s class="product-price__old">{{ product.price }}</s>
+								{% else %}
+									<strong class="product-price__total">{{ product.price }}</strong>
+								{% endif %}
+							</div>
+						</article>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

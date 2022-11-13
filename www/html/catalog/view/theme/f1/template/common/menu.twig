@@ -1,0 +1,24 @@
+<aside class="catalog page__catalog" id="page__catalog">
+	<div class="container">
+		<div class="catalog__body">
+			<ul class="catalog__list">
+				{% for category in categories %}
+					{% if category.children %}
+						<li class="catalog__item">
+							<button class="catalog__button" type="button" aria-expanded="false" aria-controls="catalog__nav-{{loop.index0}}" aria-label="категория">{{ category.name }}</button>
+							<nav class="catalog__nav" id="catalog__nav-{{ loop.index0 }}">
+								<ul class="catalog__list catalog__list--nested">
+									{% for child in category.children %}
+										<li class="catalog__item">
+											<a class="catalog__link" href="{{ child.href }}" aria-label="">{{ child.name }}</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</nav>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</aside>

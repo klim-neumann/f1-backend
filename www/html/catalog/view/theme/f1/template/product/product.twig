@@ -1,0 +1,89 @@
+{{ header }}
+<section class="product">
+	<div class="container">
+		<div class="product__body">
+			<div class="product__info">
+				<div class="product__first">
+					<div class="glide" style="margin-bottom: var(--heading-margin-bottom-primary);">
+						<div class="glide__track" data-glide-el="track">
+							<ul class="glide__slides">
+								{% if thumb %}
+									<li class="glide__slide">
+										<img class="product__img" src="{{ thumb }}" alt="{{ heading_title }}">
+									</li>
+								{% endif %}
+								{% if images %}
+									{% for image in images %}
+										<li class="glide__slide">
+											<img class="product__img" src="{{ image.popup }}" alt="{{ heading_title }}">
+										</li>
+									{% endfor %}
+								{% endif %}
+							</ul>
+						</div>
+						<div class="glide__bullets" data-glide-el="controls[nav]">
+							{% if thumb %}
+								<button class="glide-bullet glide__bullet" type="button" data-glide-dir="=0"></button>
+							{% endif %}
+							{% if images %}
+								{% for _ in images %}
+									<button class="glide-bullet glide__bullet" type="button" data-glide-dir="={{ loop.index }}"></button>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+					<h1 class="heading heading--secondary">{{ heading_title }}</h1>
+				</div>
+				<div class="product__second">
+					<div class="product-price product__product-price">
+						{% if discount %}
+							<strong class="product-price__total">{{ special }}</strong>
+							<s class="product-price__old">{{ price }}</s>
+							<span class="product-discount product-price__discount">-{{ discount }}%</span>
+						{% else %}
+							<strong class="product-price__total">{{ price }}</strong>
+						{% endif %}
+					</div>
+					<button class="button product__button" type="button" onclick="addToCart({{ product_id }})" aria-label="в корзину">В корзину</button>
+				</div>
+			</div>
+			{% if attribute_groups %}
+				<div class="product__description">
+					<h2 class="heading heading--secondary product__heading product__heading--secondary">Технические характеристики</h2>
+					<ul class="tables-list">
+						{% for attribute_group in attribute_groups %}
+							<li class="tables-list__item">
+								<div class="tables-list__table-wrapper">
+									<h3 class="heading heading--tertiary tables-list__heading">{{ attribute_group.name }}</h3>
+									<table class="table">
+										<tbody class="table__body">
+											{% for attribute in attribute_group.attribute %}
+												<tr class="table__row">
+													<th class="table__heading">{{ attribute.name }}</th>
+													<td class="table__data">{{ attribute.text }}</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</li>
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{{ bestseller }}
+<script>
+	async function addToCart(productId) {
+await fetch('index.php?route=checkout/cart/add', {
+method: 'POST',
+headers: {
+'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+},
+body: `product_id=${productId}`
+});
+}
+</script>
+{{ footer }}

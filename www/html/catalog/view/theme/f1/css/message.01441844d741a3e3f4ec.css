@@ -1,0 +1,32 @@
+.subheading {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+.heading-group {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--heading-margin-bottom-primary);
+}
+
+.heading-group--max-width-primary {
+	width: 100%;
+}
+
+@media (max-width: 1439px) {
+	.heading-group--max-width-primary {
+		max-width: 29rem;
+	}
+}
+
+@media (min-width: 1440px) {
+	.heading-group--max-width-primary {
+		max-width: 35rem;
+	}
+}
+
+
+
+
+/*# sourceMappingURL=message.01441844d741a3e3f4ec.css.map*/

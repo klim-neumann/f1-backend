@@ -1,0 +1,125 @@
+.subheading {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+.heading-group {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--heading-margin-bottom-primary);
+}
+
+.heading-group--max-width-primary {
+	width: 100%;
+}
+
+@media (max-width: 1439px) {
+	.heading-group--max-width-primary {
+		max-width: 29rem;
+	}
+}
+
+@media (min-width: 1440px) {
+	.heading-group--max-width-primary {
+		max-width: 35rem;
+	}
+}
+
+.select {
+	--select-label-padding: 0.25rem 0.5rem;
+
+	color: var(--color-dark-primary);
+	font-size: 1rem;
+	line-height: 1.5rem;
+	position: relative;
+	display: inline-flex;
+}
+
+.select__label {
+	padding: var(--select-label-padding);
+	border-radius: var(--border-radius-secondary) 0 0 var(--border-radius-secondary);
+	background-color: var(--color-grey-secondary);
+}
+
+.select__list {
+	margin: 0;
+	border: none;
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	width: 12rem;
+	padding: var(--select-label-padding);
+	border-radius: 0 var(--border-radius-secondary) var(--border-radius-secondary) 0;
+	background-color: var(--color-light-primary);
+	font-size: inherit;
+	line-height: inherit;
+	cursor: pointer;
+}
+
+.select::after {
+	content: '';
+	width: 0.75rem;
+	height: 0.75rem;
+	background-color: currentColor;
+	-webkit-mask-image: url(../img/angle-right.5a5947f558da43ad77ac.svg);
+	        mask-image: url(../img/angle-right.5a5947f558da43ad77ac.svg);
+	-webkit-mask-size: contain;
+	        mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	        mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	        mask-position: center;
+	transform: rotateZ(90deg) translateX(-50%);
+	position: absolute;
+	top: 50%;
+	right: 0.25rem;
+	z-index: 10;
+}
+
+.selects-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.products-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 0.5rem;
+}
+
+@media (max-width: 727px) {
+	.products-list {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 728px) and (max-width: 1023px) {
+	.products-list {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media (min-width: 1024px) {
+	.products-list {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+.products-list__item {
+	min-width: 0;
+}
+
+.products-list__product-card {
+	width: 100%;
+	height: 100%;
+}
+
+
+/*# sourceMappingURL=960.8192218c8c371ae5827f.css.map*/

@@ -1,0 +1,24 @@
+{{ header }}
+<section class="auth">
+	<div class="container">
+		<div class="auth__body">
+			<article class="heading-group heading-group--max-width-primary auth__heading-group">
+				<h1 class="heading">F1.comp лучшие товары для геймера</h1>
+				<p class="subheading">F1.comp интернет магазин по продаже комплектущих для ПК, игровых компьютеров и переферии для настоящего геймера.</p>
+			</article>
+			<div class="auth__form-wrapper">
+				<h2 class="heading heading--secondary heading--align-center">Регистрация</h2>
+				<form class="form" action="{{ action }}" method="post">
+					<input class="input" type="text" placeholder="Имя" name="firstname" required aria-label="имя">
+					<input class="input" type="text" placeholder="Фамилия" name="lastname" required aria-label="фамилия">
+					<input class="input" type="text" inputmode="email" name="email" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" required aria-label="электронная почта">
+					<input class="input" type="text" inputmode="tel" placeholder="Номер телефона" name="telephone" minlength="3" required aria-label="номер телефона">
+					<input class="input" type="password" placeholder="Пароль" name="password" minlength="4" required aria-label="пароль">
+					<input class="input" type="password" placeholder="Подтвердите пароль" name="confirm" minlength="4" required aria-label="подтверждение пароля">
+					<button class="button form__button" aria-label="зарегистрироваться">Зарегистрироваться</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+{{ footer }}
