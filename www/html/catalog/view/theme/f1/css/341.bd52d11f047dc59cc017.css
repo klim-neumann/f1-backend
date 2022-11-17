@@ -619,6 +619,10 @@
 	cursor: pointer;
 }
 
+.button:active {
+	background-color: blue;
+}
+
 .button--secondary {
 	padding: 0.25rem 0.5rem;
 	border-radius: var(--border-radius-secondary);
@@ -739,4 +743,4 @@
 }
 
 
-/*# sourceMappingURL=341.c112c1fe4de4f2f027c4.css.map*/
+/*# sourceMappingURL=341.bd52d11f047dc59cc017.css.map*/

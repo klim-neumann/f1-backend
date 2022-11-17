@@ -3,7 +3,7 @@ class ControllerAccountRegister extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->document->addStyle('catalog/view/theme/f1/css/341.c112c1fe4de4f2f027c4.css');
+		$this->document->addStyle('catalog/view/theme/f1/css/341.bd52d11f047dc59cc017.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/536.2854d61e9b391a86a003.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/937.10ae2824150bdf4cbe79.css');
 

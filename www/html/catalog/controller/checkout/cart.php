@@ -1,7 +1,7 @@
 <?php
 class ControllerCheckoutCart extends Controller {
 	public function index() {
-		$this->document->addStyle('catalog/view/theme/f1/css/341.c112c1fe4de4f2f027c4.css');
+		$this->document->addStyle('catalog/view/theme/f1/css/341.bd52d11f047dc59cc017.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/536.2854d61e9b391a86a003.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/cart.9873b92356cee7608d50.css');
 

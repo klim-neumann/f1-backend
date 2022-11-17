@@ -1,7 +1,7 @@
 <?php
 class ControllerAccountSuccess extends Controller {
 	public function index() {
-		$this->document->addStyle('catalog/view/theme/f1/css/341.c112c1fe4de4f2f027c4.css');
+		$this->document->addStyle('catalog/view/theme/f1/css/341.bd52d11f047dc59cc017.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/message.01441844d741a3e3f4ec.css');
 
 		$this->document->addScript('catalog/view/theme/f1/js/341.50da31cc4fe2fd66ced6.js');

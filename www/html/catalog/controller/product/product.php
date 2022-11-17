@@ -4,9 +4,9 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 		$this->document->addStyle('catalog/view/theme/f1/css/824.2c4cfdee30ad9f6fcd27.css');
-		$this->document->addStyle('catalog/view/theme/f1/css/341.c112c1fe4de4f2f027c4.css');
+		$this->document->addStyle('catalog/view/theme/f1/css/341.bd52d11f047dc59cc017.css');
 		$this->document->addStyle('catalog/view/theme/f1/css/536.2854d61e9b391a86a003.css');
-		$this->document->addStyle('catalog/view/theme/f1/css/product.890b0eebc35bf2f94451.css');
+		$this->document->addStyle('catalog/view/theme/f1/css/product.f7486324f969c8aae633.css');
 
 		$this->document->addScript('catalog/view/theme/f1/js/824.fe441e093f416c919831.js');
 		$this->document->addScript('catalog/view/theme/f1/js/341.50da31cc4fe2fd66ced6.js');
@@ -243,12 +243,12 @@ class ControllerProductProduct extends Controller {
 			$this->document->setDescription($product_info['meta_description']);
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
-			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
-			$this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-			$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
+			// $this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
+			// $this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+			// $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 			$data['heading_title'] = $product_info['name'];
 
@@ -444,6 +444,7 @@ class ControllerProductProduct extends Controller {
 				}
 
 				$data['products'][] = array(
+					'quantity'    => $result['quantity'],
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -480,6 +481,8 @@ class ControllerProductProduct extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
+			$data['quantity'] = $product_info['quantity'];
 
 			$setting['limit'] = 6;
 			$setting['width'] = 700;

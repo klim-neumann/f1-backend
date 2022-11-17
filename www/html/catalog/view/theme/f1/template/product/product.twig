@@ -46,6 +46,17 @@
 					</div>
 					<button class="button product__button" type="button" onclick="addToCart({{ product_id }})" aria-label="в корзину">В корзину</button>
 				</div>
+				{% if quantity == 0 %}
+					<style>
+						@media (max-width: 727px) {
+							.product__alert {
+								top: 0.5rem;
+								bottom: initial;
+							}
+						}
+					</style>
+					<span class="product__alert" style="">Товара нет в наличии</span>
+				{% endif %}
 			</div>
 			{% if attribute_groups %}
 				<div class="product__description">
@@ -77,13 +88,17 @@
 {{ bestseller }}
 <script>
 	async function addToCart(productId) {
-await fetch('index.php?route=checkout/cart/add', {
-method: 'POST',
-headers: {
-'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-},
-body: `product_id=${productId}`
-});
-}
+		const res = await fetch('index.php?route=checkout/cart/add', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+			body: `product_id=${productId}`
+		});
+
+		const json = await res.json();
+
+		console.log(json);
+	}
 </script>
 {{ footer }}
